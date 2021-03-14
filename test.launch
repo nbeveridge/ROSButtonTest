@@ -1,0 +1,12 @@
+<launch>
+    <arg name="distal_stepper_gpio_pins" default="[1,1,1,1]"/>
+    <arg name="distal_sensor_gpio_pins" default="[2,2,2,2]"/>
+    <arg name="button_gpio_pins" default="[3,3,3,3]"/>
+        <node pkg="scripts" name="controller_node_pub_sub" type="controller_node_pub_sub.py" output="screen"/>
+        <node pkg="scripts" name="distal_balloon_node_sub" type="distal_balloon_node_sub.py" output="screen"/>
+        <node pkg="scripts" name="distal_balloon_sensor_node_pub" type="distal_balloon_sensor_node_pub.py" output="screen"/>
+        <node pkg="scripts" name="user_command_node_pub" type="user_command_node_pub.py" output="screen"/>
+            <rosparam param="distal_stepper_gpio_pins" subst_value="True">$(arg distal_stepper_gpio_pins)</rosparam> 
+            <rosparam param="distal_sensor_gpio_pins" subst_value="True">$(arg distal_sensor_gpio_pins)</rosparam> 
+            <rosparam param="button_gpio_pins" subst_value="True">$(arg button_gpio_pins)</rosparam> 
+</launch>
